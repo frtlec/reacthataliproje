@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
 
 export default class App extends Component {
@@ -17,6 +18,18 @@ class HomeScreen extends Component {
 		return (
 			<View style={styles.container}>
 				<Text>Home</Text>
+				<Button title="Go Deneme" onPress={()=>{
+					this.props.navigation.navigate("DenemeScreen")
+				}}/>
+			</View>
+		);
+	}
+}
+class DenemeScreen extends Component {
+	render() {
+		return (
+			<View style={styles.container}>
+				<Text>Deneme</Text>
 			</View>
 		);
 	}
@@ -25,6 +38,9 @@ class HomeScreen extends Component {
 const AppNavigator = createStackNavigator({
 	Home: {
 		screen: HomeScreen
+	},
+	DenemeScreen:{
+		screen:DenemeScreen
 	}
 });
 
